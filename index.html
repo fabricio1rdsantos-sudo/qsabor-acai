@@ -1433,7 +1433,22 @@ function sendOrder() {
   msg += `✨ Pedido feito pelo site QSabor Açaí`;
   
   window.open(`https://wa.me/556593525542?text=${msg}`, '_blank');
-  
+
+  // === REGISTRAR PEDIDO ===
+  try {
+    const orders = JSON.parse(localStorage.getItem('qsabor_orders') || '[]');
+    orders.push({
+      date: new Date().toISOString(),
+      name: name,
+      phone: phone,
+      items: state._sizesText + (state._addsText ? ' | ' + state._addsText : ''),
+      total: state._total,
+      payment: state.payment,
+      address: buildAddressString()
+    });
+    localStorage.setItem('qsabor_orders', JSON.stringify(orders));
+  } catch(e) {}
+
   document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
   document.getElementById('panel-success').classList.add('active');
 }
