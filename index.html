@@ -470,6 +470,21 @@ nav a:hover { color: var(--gold); }
 .pay-opt.selected { border-color: var(--gold); background: rgba(249,168,37,0.1); color: var(--gold); }
 .pay-opt .pay-icon { font-size: 1.8rem; margin-bottom: 8px; }
 
+.payment-info {
+  display: none;
+  background: rgba(249,168,37,0.1);
+  border: 1px solid rgba(249,168,37,0.3);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  font-size: 0.82rem;
+  color: #f0d080;
+  line-height: 1.5;
+}
+.payment-info.visible { display: flex; align-items: flex-start; gap: 10px; }
+.payment-info .info-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+
 .nav-buttons { display: flex; gap: 16px; justify-content: space-between; margin-top: 32px; }
 .btn-back { background: transparent; border: 2px solid rgba(255,255,255,0.2); color: #aaa; font-family: 'Nunito', sans-serif; font-weight: 700; padding: 14px 28px; border-radius: 50px; cursor: pointer; transition: all 0.2s; }
 .btn-back:hover { border-color: var(--white); color: var(--white); }
@@ -935,6 +950,14 @@ footer {
                 <div class="pay-icon">💵</div>Dinheiro
               </div>
             </div>
+            <div class="payment-info" id="payment-info-pix">
+              <span class="info-icon">ℹ️</span>
+              <span>A chave Pix será gerada e enviada pelo atendente da loja diretamente no seu WhatsApp após o envio do pedido.</span>
+            </div>
+            <div class="payment-info" id="payment-info-card">
+              <span class="info-icon">ℹ️</span>
+              <span>O pagamento no cartão será realizado no ato da entrega. O entregador levará a maquininha.</span>
+            </div>
           </div>
           <div class="form-group" id="troco-wrap" style="display:none">
             <label>💵 Troco para quanto?</label>
@@ -1336,11 +1359,23 @@ function updateSizeCart() {
 
 // === PAYMENT ===
 function selectPayment(el, method) {
-  document.querySelectorAll('.pay-opt').forEach(o => o.classList.remove('selected'));
-  el.classList.add('selected');
-  state.payment = method;
-  document.getElementById('troco-wrap').style.display = method === 'Dinheiro' ? 'block' : 'none';
-}
+    document.querySelectorAll('.pay-opt').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    state.payment = method;
+    document.getElementById('troco-wrap').style.display = method === 'Dinheiro' ? 'block' : 'none';
+
+    // Mostrar/esconder avisos informativos de pagamento
+    const infoPix = document.getElementById('payment-info-pix');
+    const infoCard = document.getElementById('payment-info-card');
+    infoPix.classList.remove('visible');
+    infoCard.classList.remove('visible');
+
+    if (method === 'Pix') {
+      infoPix.classList.add('visible');
+    } else if (method === 'Cartão Débito' || method === 'Cartão Crédito') {
+      infoCard.classList.add('visible');
+    }
+  }
 
 // === STEP NAV ===
 function goToStep(step) {
