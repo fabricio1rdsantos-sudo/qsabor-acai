@@ -1432,7 +1432,7 @@ function sendOrder() {
   msg += `%0A💰 *TOTAL: R$ ${state._total.toFixed(2).replace('.',',')}*%0A%0A`;
   msg += `✨ Pedido feito pelo site QSabor Açaí`;
   
-  window.open(`https://www.contate.me/qsabor_acai?text=${msg}`, '_blank');
+  window.open(`https://wa.me/556593525542?text=${msg}`, '_blank');
   
   document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
   document.getElementById('panel-success').classList.add('active');
