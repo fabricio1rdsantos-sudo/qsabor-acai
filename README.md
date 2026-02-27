@@ -1,46 +1,42 @@
-# 🫐 QSabor Açaí — Site Oficial
+# 🫐 QSabor Açaí — Site + Painel Admin
 
-Site completo de delivery para a loja **QSabor Açaí**, desenvolvido em HTML/CSS/JS puro (sem dependências externas ou frameworks).
+Site completo de delivery com **painel administrativo** para a loja QSabor Açaí.
 
-## 🚀 Como subir no GitHub Pages
-
-1. Crie um repositório no GitHub (ex: `qsabor-acai`)
-2. Faça upload dos arquivos deste projeto
-3. Vá em **Settings → Pages**
-4. Em **Source**, selecione `main` branch e pasta `/ (root)`
-5. Clique em **Save**
-6. Seu site estará disponível em: `https://seu-usuario.github.io/qsabor-acai`
-
-## 📁 Estrutura do Projeto
+## 📁 Arquivos
 
 ```
 qsabor-acai/
-├── index.html      # Site completo (tudo em um único arquivo)
-└── README.md       # Este arquivo
+├── index.html    # Site do cliente (cardápio + pedidos)
+├── admin.html    # Painel administrativo (login + gerenciamento)
+└── README.md     # Este arquivo
 ```
 
-## ✅ Funcionalidades
+## 🔐 Acesso ao Admin
 
-- **Página institucional** com hero animado, diferenciais e informações da loja
-- **Sistema de pedido em 4 etapas:**
-  - Etapa 1: Escolha de tamanho e quantidade (Copo / Marmita) com contador
-  - Etapa 2: Adicionais grátis e pagos com contador individual + total em tempo real
-  - Etapa 3: Dados de entrega com busca automática de CEP (API ViaCEP) + validação de WhatsApp com DDD
-  - Etapa 4: Resumo completo e confirmação via WhatsApp
-- **Envio do pedido** formatado direto para o WhatsApp da loja via [contate.me/qsabor_acai](https://www.contate.me/qsabor_acai)
-- **Design responsivo** (mobile e desktop)
+Acesse: `https://fabricio1rdsantos-sudo.github.io/qsabor-acai/admin.html`
 
-## 🛠️ Tecnologias
+**Usuário padrão:**
+- Usuário: `admin`
+- Senha: `qsabor2024`
 
-- HTML5 / CSS3 / JavaScript (Vanilla)
-- Google Fonts (Bebas Neue + Nunito)
-- API ViaCEP (consulta de CEP gratuita)
-- WhatsApp via contate.me
+⚠️ **Troque a senha após o primeiro acesso!**
 
-## 📱 WhatsApp da Loja
+## ✅ O que o Admin gerencia
 
-Pedidos enviados para: [contate.me/qsabor_acai](https://www.contate.me/qsabor_acai)
+- 🏪 **Status da loja** — Abrir/fechar para pedidos com mensagem personalizada
+- 📏 **Tamanhos & Preços** — Adicionar, editar e ativar/desativar copos e marmitas
+- 🍓 **Adicionais** — Gerenciar adicionais grátis e pagos com preços
+- ℹ️ **Informações** — Horários, telefone, Instagram, taxa de entrega
+- 👥 **Usuários** — Criar e remover colaboradores com perfis diferentes
+
+Todas as alterações feitas no admin **refletem automaticamente no site** dos clientes.
+
+## 🚀 Como publicar no GitHub Pages
+
+1. Crie repositório `qsabor-acai` no GitHub
+2. Faça upload dos 3 arquivos
+3. Settings → Pages → Source: `main` / `/(root)` → Save
+4. Site disponível em: `https://fabricio1rdsantos-sudo.github.io/qsabor-acai`
 
 ---
-
 © 2024 QSabor Açaí — Açaí, o sabor que te move.
